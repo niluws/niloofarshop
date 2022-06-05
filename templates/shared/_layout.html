@@ -1,0 +1,38 @@
+{% load render_partial %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>EShopper - Bootstrap Shop Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    {% include 'shared/header_references.html' %}
+</head>
+<body>
+
+{% block sidebar %}
+
+{% endblock %}
+{% block navbar %}
+
+{% endblock %}
+
+<!-- Products Start -->
+{% block content %}{% endblock %}
+<!-- Products End -->
+<!-- Vendor Start -->
+{% render_partial 'home.views.Vendor' %}
+<!-- Vendor End -->
+<!-- Footer Start -->
+{% render_partial 'home.views.footer' %}
+
+<!-- Footer End -->
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+{% include 'shared/footer_references.html' %}
+</body>
+
+</html>
