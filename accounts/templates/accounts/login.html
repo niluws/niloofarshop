@@ -1,0 +1,53 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+{% block sidebar %}
+<!-- Topbar Start -->
+    {% render_partial 'home.views.header' %}
+    <!-- Topbar End -->
+    {% render_partial 'home.views.other_navbar_parsial' %}
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Login</h1>
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="{% url 'home' %}">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Login</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+{% endblock %}
+{% block content %}
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 justify-content-end">
+            <div class="col-lg-9 ">
+                <div class="mb-4">
+                    <h4 class="font-weight-semi-bold mb-4">Login</h4>
+                    <form class="row" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                        {% for foo in loginForm %}
+                            <div class="col-12 form-group">
+                            <label>{{ foo.lable }}</label>
+                                {{ foo }}
+                        </div>
+                        {% endfor %}
+
+                        <div class="col-12 form-group">
+
+                            <button class="btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3">Login</button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
