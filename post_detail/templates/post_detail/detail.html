@@ -37,10 +37,14 @@
 
 
                     </div>
-                   {% for foo in visit %}
-                        <small class="pt-1">({{ foo }} Reviews)</small>
+                    {% for foo in slug.productvisit_set.all %}
+                            <small class="pt-1">( {{ slug.productvisit_set.count }} Reviews)</small>
 
-                   {% endfor %}
+                    {% endfor %}
+
+
+
+{#                   {% endfor %}#}
 
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">$ {{slug.price}}</h3>
