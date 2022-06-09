@@ -22,37 +22,22 @@
                     <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
                     <form>
                         <div class="slidecontainer">
-                            <p>Highest price: <span id="demo"></span></p>
-                               <input id="myRange" class="span2" data-slider-min="0"  type="range" min="0" max="$ {{ end_price }}" value="{{ end_price }}">
+                            <p>Highest price:$ <span id="demo"></span></p>
+                            <input id="myRange" class="span2" data-slider-min="0" type="range" min="0"
+                                   max="{{ end_price }}" value="{{ end_price }}">
                             <br/>
                             <div class="range_number"><b>0</b> <b class="pull-left">$ {{ end_price }}</b></div>
                             <form method="get" id="filter_form">
-                                <input type="hidden" name="end" id="end_price" value="{{ end_price }}">
+                                <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
+                                <input type="hidden" name="end_price" id="end_price" value="{{ end_price }}">
 
                             </form>
-{#                            <button  id="" onclick="filter()">filter</button>#}
+                            <button id="" onclick="filterProducts()">filter</button>
                         </div>
 
                     </form>
                 </div>
-                <script>
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.max;
 
-slider.oninput = function() {
-  output.innerHTML = this.value;
-}
-
-function filter() {
-    const filterPrice=$(myRange).val()
-    const endprice = filterPrice.split()[1];
-    $('#end_price').val(end_price);
-    $('#filter_form').submit();
-
-
-}
-</script>
                 <!-- Price End -->
 
                 <!-- Color Start -->
@@ -195,7 +180,7 @@ function filter() {
                     {% endfor %}
 
 
-                    <div class="col-12 pb-1">
+                            <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <li class="page-item">
@@ -225,10 +210,10 @@ function filter() {
                                         </a>
 
                                     {% endif %}
-
                                 </li>
                             </ul>
                         </nav>
+
                     </div>
                 </div>
             </div>
@@ -237,5 +222,11 @@ function filter() {
     </div>
     <!-- Shop End -->
 
+    <script>
+        function fillPage(page) {
+            $('#page').val(page);
+            $('#filter_form').submit();
+        }
 
+    </script>
 {% endblock %}

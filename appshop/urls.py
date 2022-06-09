@@ -23,4 +23,4 @@ urlpatterns = [
     path('Contact_us/', include('Contact.urls')),
     path('post_detail/', include('post_detail.urls')),
     path('account/',include('accounts.urls'))
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+]

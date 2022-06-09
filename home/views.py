@@ -9,7 +9,7 @@ class home(ListView):
     template_name = 'home.html'
     model = Information
     context_object_name = 'information'
-    paginate_by = 9
+    paginate_by = 1
     def get_context_data(self, *, object_list=None, **kwargs):
         context=super(home, self).get_context_data()
         query = Information.objects.all()
@@ -36,9 +36,6 @@ def footer(request):
     return render(request,'shared/footer_parsial.html',{'site':site})
 
 
-
-def Vendor(request):
-    return render(request,'shared/Vendor_parsial.html')
 def navbar(request:HttpRequest):
     nav_category=Category.objects.prefetch_related('category_set').filter(is_active=True)
     Slide=Slider.objects.all()

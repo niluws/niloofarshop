@@ -37,7 +37,11 @@
 
 
                     </div>
-                    <small class="pt-1">(50 Reviews)</small>
+                   {% for foo in visit %}
+                        <small class="pt-1">({{ foo }} Reviews)</small>
+
+                   {% endfor %}
+
                 </div>
                 <h3 class="font-weight-semi-bold mb-4">$ {{slug.price}}</h3>
                 <p class="mb-4">{{slug.descriotions}}</p>

@@ -1,6 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-
+from accounts.models import User
 class Category(models.Model):
     cat=models.CharField(max_length=100,null=True)
     parent = models.ManyToManyField('Category',blank=True)
@@ -20,4 +20,10 @@ class Information(models.Model):
     def __str__(self):
         return self.name
 
-# Create your models here.
+class ProductVisit(models.Model):
+    product = models.ForeignKey('Information', on_delete=models.CASCADE)
+    ip = models.CharField(max_length=30)
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.product.name} / {self.ip}'
