@@ -23,16 +23,23 @@
                     <form>
                         <div class="slidecontainer">
                             <p>Highest price:$ <span id="demo"></span></p>
-                            <input id="myRange" class="span2" data-slider-min="0" type="range" min="0"
-                                   max="{{ end_price }}" value="{{ end_price }}">
+                            <input id="myRange"
+                                   class="span2"
+                                   data-slider-min="0"
+                                   type="range"
+                                   min="0"
+                                   max="{{ end_price }}"
+                                   value="{{ end_price }}"
+                                   data-slider-max="{{ db_max_price }}"
+                            >
                             <br/>
-                            <div class="range_number"><b>0</b> <b class="pull-left">$ {{ end_price }}</b></div>
+                            <div class="range_number"><b>0</b> <b class="pull-left">$ {{ db_max_price }}</b></div>
                             <form method="get" id="filter_form">
-                                <input type="hidden" name="page" id="page" value="{{ page_obj.number }}">
                                 <input type="hidden" name="end_price" id="end_price" value="{{ end_price }}">
 
                             </form>
-                            <button id="" onclick="filterProducts()">filter</button>
+                            <button id="" class="btn btn-light py-2 px-3 border" onclick="filterProducts()">filter
+                            </button>
                         </div>
 
                     </form>
@@ -180,7 +187,7 @@
                     {% endfor %}
 
 
-                            <div class="col-12 pb-1">
+                    <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <li class="page-item">

@@ -16,7 +16,8 @@ class Information(models.Model):
     cat=models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     descriotions = models.CharField(max_length=100)
     slug = models.CharField(max_length=100)
-
+    is_active = models.BooleanField(default=True,null=True)
+    is_delete = models.BooleanField(null=True)
     def __str__(self):
         return self.name
 
