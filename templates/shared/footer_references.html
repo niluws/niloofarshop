@@ -1,5 +1,7 @@
 <!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
@@ -31,28 +33,56 @@
         $('#end_price').val(end_price);
         $('#filter_form').submit();
     }
+
     function addProductToOrder(product_id) {
+
         const productCount = $('#product-count').val();
-        $.get('/order/add-to-order?product_id=' + product_id + '&count=' + productCount).then(value =>
-            console.log(value),
-             Swal.fire({
-            title: 'notic',
-            text: value.text,
-            icon: value.icon,
-            showCancelButton: false,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: value.confirm_button_text
-        }).then((result) => {
-            if (result.isConfirmed && value.status === 'not_auth') {
-                window.location.href = '/account/login/';
-            }
-        })
-        );
+
+        $.get('/order/add-to-order?product_id=' + product_id + '&count=' + productCount).then(value => {
+            Swal.fire({
+
+                text: value.text,
+                icon: value.icon,
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: value.confirm_button_text
+            }).then((result) => {
+                if (result.isConfirmed && value.status === 'not_auth') {
+                    window.location.replace('/login');
+                }
+            });
+
+        });
+
 
     }
+
     function removeOrderDetail(detailId) {
-    $.get('/order/Shoppingl?detail_id=' + detailId).then(value => {
+        $.get('/order/Shoppingl?detail_id=' + detailId).then(value => {
             console.log(value)
+        });
+    }
+
+    function success() {
+        var element = document.getElementById("success");
+        element.classList.add("alert-success");
+        document.getElementById('success').innerHTML = "email has been sent ";
+        alert(' chack your mail to activate your account.if you could not find it chack your drafts')
+
+    }
+
+    function removeOrderDetail(detailId) {
+    $.get('/order/remove-order-detail?detail_id=' + detailId).then(res => {
+        if (res.status === 'success') {
+            $('#order-detail-content').html(res.body);
+        }
+    });
+}
+function changeOrderCount(detailId, state) {
+   $.get('/order/change-order-detail?detail_id=' + detailId + '&state=' + state).then(res => {
+        if (res.status === 'success') {
+            $('#order-detail-content').html(res.body);
+        }
     });
 }
 </script>
