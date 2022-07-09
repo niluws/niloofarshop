@@ -9,7 +9,7 @@ class home(ListView):
     template_name = 'home.html'
     model = Information
     context_object_name = 'information'
-    paginate_by = 1
+    paginate_by = 9
     def get_context_data(self, *, object_list=None, **kwargs):
         context=super(home, self).get_context_data()
         query = Information.objects.all()
