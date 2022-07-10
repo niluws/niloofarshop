@@ -141,13 +141,13 @@ STATIC_ROOT=BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 cloudinary.config(
   cloud_name = "nilotus",
-  api_key = "822182257632531",
-  api_secret = "yF0bKMMirO2J0uEk_8RUW6l9GMI"
+  api_key = "********",
+  api_secret = "***********"
 )
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'lotus.developer22@gmail.com'
-EMAIL_HOST_PASSWORD = 'ovplhbnrynvudwmq'
+EMAIL_HOST_PASSWORD = '************'
 EMAIL_PORT = 587
